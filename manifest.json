@@ -1,0 +1,16 @@
+{
+  "name": "رحلة الأنبياء - MR JOO WORLD",
+  "short_name": "رحلة الأنبياء",
+  "description": "لعبة رحلة الأنبياء التفاعلية التعليمية",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0d1b2a",
+  "theme_color": "#1b2a4a",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ]
+}
