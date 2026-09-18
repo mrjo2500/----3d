@@ -1,26 +1,399 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<title>MR JOO WORLD</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>MR JOO WORLD - 3D EDITION</title>
 <style>
-:root{--gold:#ffd66b;--purple:#b866ff;--cyan:#42e7ff;--green:#39e8a0;--red:#ff4f72;--panel:#050914e8}*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#02040a;color:#fff;font-family:Arial,Tahoma,sans-serif}body{overflow-x:hidden;overflow-y:auto}.world{position:fixed;inset:0;background:center/cover no-repeat;z-index:0;transition:background-image .8s}.world:after{content:"";position:absolute;inset:0;background:linear-gradient(#0005,#0002 35%,#000e),radial-gradient(circle at 50% 42%,transparent 10%,#000b)}.app{position:relative;z-index:2;min-height:100svh;max-width:1200px;margin:auto;padding:10px;display:flex;flex-direction:column;gap:10px}.top{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border:1px solid #ffffff30;border-radius:17px;background:#020711d9;backdrop-filter:blur(14px);position:sticky;top:8px;z-index:4}.brand{display:flex;align-items:center;gap:9px}.logo{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--gold),#fff1a8);color:#211606;font-size:24px;font-weight:1000}.brand h1{margin:0;font-size:clamp(16px,2.6vw,29px);background:linear-gradient(90deg,#fff,var(--gold),var(--purple));-webkit-background-clip:text;color:transparent}.brand small{display:block;color:#bdc8dc;font-size:9px}.hud{display:flex;gap:6px}.pill{min-width:66px;text-align:center;border:1px solid #ffffff22;border-radius:10px;padding:5px 7px;background:#ffffff0b}.pill small{display:block;color:#b5bfd3;font-size:8px}.pill b{font-size:16px;color:var(--gold)}.arena{width:min(930px,100%);margin:auto;display:flex;flex-direction:column;align-items:center;gap:10px;padding:4px 0 18px}.meta{width:100%;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:800}.meta b{color:var(--gold)}.bar{height:5px;flex:1;background:#ffffff20;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan),var(--gold));transition:.3s}.timer{width:82px;height:82px;display:grid;place-items:center;border-radius:50%;background:conic-gradient(var(--gold) calc(var(--time)*1%),#ffffff19 0);box-shadow:0 0 30px #ffd66b55}.timer:before{content:"";position:absolute;width:70px;height:70px;border-radius:50%;background:#050913;border:1px solid #ffffff22}.timer div{position:relative;text-align:center}.timer b{display:block;color:var(--gold);font-size:25px}.timer small{font-size:8px;letter-spacing:2px}.timer.hidden{visibility:hidden}.question{position:relative;width:100%;min-height:155px;padding:27px 16px;display:flex;align-items:center;justify-content:center;text-align:center;background:linear-gradient(135deg,#020711ed,#14081de8);border:2px solid #e3b74fbb;border-radius:24px;box-shadow:0 20px 60px #000c,inset 0 0 35px #ffffff08}.question:before{content:"";position:absolute;inset:8px;border:1px solid #ffffff20;border-radius:17px}.question h2{position:relative;margin:0;font-size:clamp(21px,3.2vw,42px);line-height:1.48;text-shadow:0 4px 25px #000}.question span{position:absolute;right:14px;top:10px;color:var(--gold);font-size:10px}.answers{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.answer{min-height:72px;display:flex;align-items:center;gap:10px;text-align:right;padding:10px 12px;border:2px solid #ffffff25;border-radius:16px;background:linear-gradient(135deg,#091424f5,#030810f5);cursor:pointer;transition:.2s;box-shadow:0 10px 24px #0009}.answer:hover{transform:translateY(-2px);border-color:var(--cyan)}.answer .letter{width:38px;height:38px;flex:0 0 38px;display:grid;place-items:center;border-radius:11px;border:1px solid var(--gold);color:var(--gold);font-size:19px;font-weight:1000;background:#ffd66b12}.answer .text{font-size:clamp(14px,1.7vw,20px);font-weight:850;line-height:1.35}.answer.correct{border-color:var(--green);background:#073629e8;box-shadow:0 0 26px #36e8a066}.answer.wrong{border-color:var(--red);background:#3d0b17e8}.answer.locked{pointer-events:none;opacity:.86}.feedback{width:100%;min-height:38px;padding:9px;text-align:center;border-radius:12px;background:#020711d9;border:1px solid #ffffff22;color:#d5deed;font-size:12px}.feedback.good{color:#aaffd9;border-color:#36e8a066}.feedback.bad{color:#ffc1cb;border-color:#ff4d7066}.intro{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:#02030af5;transition:opacity .8s}.intro.hide{opacity:0;pointer-events:none}.intro-bg{position:absolute;inset:0;background:center/cover no-repeat;filter:brightness(.38)}.intro-card{position:relative;text-align:center;padding:28px}.intro-card img{width:min(82vw,430px);max-height:45vh;object-fit:contain;filter:drop-shadow(0 0 28px #ffd66b66);animation:logoIn 1.3s ease}.intro-card p{font-size:clamp(17px,3vw,28px);letter-spacing:2px;font-weight:900}.start{border:0;border-radius:15px;padding:14px 30px;background:linear-gradient(135deg,var(--gold),#a86d15);font-weight:900;cursor:pointer}.ad{display:none!important}@keyframes logoIn{from{opacity:0;transform:scale(.65) rotateX(40deg);filter:blur(12px)}to{opacity:1;transform:none;filter:drop-shadow(0 0 28px #ffd66b66)}}@media(max-width:650px){.app{padding:7px}.top{position:relative;top:auto}.brand small{display:none}.pill{min-width:60px}.answers{grid-template-columns:1fr}.answer{min-height:62px}.timer{width:74px;height:74px}.timer:before{width:63px;height:63px}.timer b{font-size:22px}}
+:root { --gold: #ffd66b; --orange: #ff8c42; --red: #ff3c38; --dark: #0a0505; --glass: rgba(20, 10, 5, 0.45); }
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100vh; background: var(--dark); color: #fff; font-family: 'Segoe UI', Tahoma, sans-serif; overflow: hidden; perspective: 1200px; }
+
+/* Backgrounds & Canvas */
+.world { position: fixed; inset: 0; background: center/cover no-repeat; z-index: 0; filter: brightness(0.6) contrast(1.1); transition: background-image 1s ease-in-out; }
+#explosionCanvas { position: fixed; inset: 0; z-index: 11; pointer-events: none; }
+
+/* Main App Container */
+.app { position: relative; z-index: 2; height: 100vh; max-width: 1000px; margin: auto; display: flex; flex-direction: column; opacity: 0; transition: opacity 1s; padding: 15px; pointer-events: none; }
+.app.visible { opacity: 1; pointer-events: auto; overflow-y: auto; overflow-x: hidden; }
+
+/* Header (Fixed) */
+.top { display: flex; align-items: center; justify-content: space-between; padding: 10px 15px; background: rgba(0,0,0,0.6); border-bottom: 2px solid var(--orange); border-radius: 20px; backdrop-filter: blur(10px); box-shadow: 0 5px 20px rgba(255, 140, 66, 0.2); margin-bottom: 20px; transform: translateZ(0); }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand h1 { margin: 0; font-size: 22px; background: linear-gradient(90deg, #fff, var(--gold), var(--orange)); -webkit-background-clip: text; color: transparent; text-shadow: 0 0 10px rgba(255, 214, 107, 0.3); }
+.brand small { color: #ccc; font-size: 10px; letter-spacing: 1px; }
+.hud { display: flex; gap: 10px; }
+.pill { padding: 5px 12px; border: 1px solid var(--orange); border-radius: 12px; background: rgba(255, 140, 66, 0.1); text-align: center; }
+.pill small { display: block; font-size: 9px; color: var(--gold); }
+.pill b { font-size: 18px; }
+
+/* 3D Arena (Tilts with Mouse) */
+.arena { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; transform-style: preserve-3d; transition: transform 0.1s ease-out; padding-bottom: 20px; width: 100%; }
+.level-title { font-size: 22px; color: var(--gold); text-shadow: 0 0 15px var(--orange); margin: 0; font-weight: 900; transform: translateZ(40px); }
+
+/* Pulse Timer */
+.timer { position: relative; width: 85px; height: 85px; display: grid; place-items: center; border-radius: 50%; background: conic-gradient(var(--red) calc(var(--time)*1%), transparent 0); box-shadow: 0 0 25px rgba(255, 60, 56, 0.6); transform: translateZ(30px); }
+.timer:before { content: ""; position: absolute; width: 75px; height: 75px; border-radius: 50%; background: radial-gradient(circle, #2a110a, #000); }
+.timer b { position: relative; font-size: 28px; color: var(--gold); font-weight: bold; }
+
+/* 3D Question Box */
+.question-box { width: 100%; min-height: 130px; display: flex; align-items: center; justify-content: center; text-align: center; background: var(--glass); backdrop-filter: blur(12px); border: 1px solid rgba(255,214,107,0.3); border-radius: 20px; padding: 25px; transform: translateZ(50px); box-shadow: 0 20px 40px rgba(0,0,0,0.7), inset 0 0 20px rgba(255, 140, 66, 0.1); }
+.question-box h2 { margin: 0; font-size: clamp(22px, 4vw, 36px); line-height: 1.5; color: #fff; text-shadow: 2px 2px 5px #000, 0 0 15px var(--orange); }
+
+/* 3D MCQ Answers */
+.answers { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; transform-style: preserve-3d; }
+.answer { min-height: 75px; display: flex; align-items: center; gap: 15px; padding: 12px 25px; text-align: right; background: var(--glass); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 15px; cursor: pointer; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); color: #fff; font-size: clamp(18px, 2vw, 24px); font-weight: bold; box-shadow: 0 15px 25px rgba(0,0,0,0.6); transform: translateZ(20px); }
+.answer:hover { border-color: var(--gold); transform: translateZ(45px) scale(1.05); background: rgba(255, 140, 66, 0.25); box-shadow: 0 20px 30px rgba(255, 140, 66, 0.4); }
+.answer.correct { border-color: #39e8a0; background: rgba(57, 232, 160, 0.3); text-shadow: 0 0 10px #39e8a0; transform: translateZ(50px) scale(1.05); }
+.answer.wrong { border-color: var(--red); background: rgba(255, 60, 56, 0.3); transform: translateZ(10px) scale(0.95); }
+.answer.locked { pointer-events: none; }
+
+/* Level 2: 3D Word Puzzle */
+.word-puzzle { width: 100%; display: none; flex-direction: column; align-items: center; gap: 20px; transform: translateZ(30px); transform-style: preserve-3d; }
+.letters-box { display: flex; gap: 15px; font-size: 36px; font-weight: bold; color: var(--gold); text-shadow: 0 0 20px var(--orange); background: var(--glass); padding: 20px 40px; border-radius: 15px; border: 1px dashed var(--gold); transform: translateZ(40px); backdrop-filter: blur(10px); }
+.input-area { display: flex; gap: 10px; width: 100%; max-width: 500px; transform: translateZ(20px); }
+.input-area input { flex: 1; background: rgba(0,0,0,0.6); border: 2px solid var(--orange); color: #fff; font-size: 22px; padding: 15px; border-radius: 12px; text-align: center; outline: none; transition: 0.3s; box-shadow: inset 0 0 10px rgba(0,0,0,0.8); }
+.input-area input:focus { box-shadow: 0 0 20px var(--orange); transform: scale(1.02); }
+.input-area button { background: linear-gradient(135deg, var(--orange), var(--red)); border: none; color: #fff; font-weight: bold; padding: 0 25px; border-radius: 12px; cursor: pointer; font-size: 20px; transition: 0.2s; box-shadow: 0 10px 20px rgba(255,60,56,0.4); }
+.input-area button:hover { transform: scale(1.05); }
+.input-area button:active { transform: scale(0.95); }
+.found-words { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; min-height: 50px; transform: translateZ(15px); }
+.found-words span { background: rgba(57, 232, 160, 0.2); border: 1px solid #39e8a0; padding: 8px 20px; border-radius: 20px; font-size: 18px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+
+/* Intro Screen */
+.intro { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #050202; transition: opacity 0.5s; perspective: 800px; }
+.intro img { width: min(80vw, 350px); border-radius: 50%; box-shadow: 0 0 50px var(--orange), inset 0 0 20px var(--gold); animation: float 3s infinite ease-in-out; border: 3px solid var(--gold); }
+.intro h1 { margin-top: 25px; color: var(--gold); font-size: 32px; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 0 25px var(--red); }
+.start-btn { margin-top: 35px; padding: 18px 60px; font-size: 26px; font-weight: 900; color: #fff; background: linear-gradient(45deg, var(--red), var(--orange)); border: none; border-radius: 35px; cursor: pointer; box-shadow: 0 10px 30px var(--orange); transition: 0.2s; }
+.start-btn:hover { transform: scale(1.1) translateZ(20px); box-shadow: 0 15px 50px var(--gold); }
+
+@keyframes float { 0%, 100% { transform: translateY(0) translateZ(0); } 50% { transform: translateY(-20px) translateZ(20px); } }
+@media (max-width: 600px) { .answers { grid-template-columns: 1fr; } .timer { width: 70px; height: 70px; } .timer:before { width: 60px; height: 60px; } .timer b { font-size: 22px; } }
 </style>
 </head>
 <body>
+
+<canvas id="explosionCanvas"></canvas>
 <div class="world" id="world"></div>
-<div class="intro" id="intro"><div class="intro-bg" id="introBg"></div><div class="intro-card"><img src="https://iili.io/noyfWAl.png" alt="MR JOO WORLD"><p>WELCOME IN MR JOO WORLD</p><button class="start" id="start">دخول اللعبة</button></div></div>
-<div class="app"><header class="top"><div class="brand"><div class="logo">M</div><div><h1>MR JOO WORLD</h1><small>REALMS • QUIZ • RIDDLES</small></div></div><div class="hud"><div class="pill"><small>النقاط</small><b id="score">0</b></div><div class="pill"><small>السلسلة</small><b id="streak">0</b></div></div></header><main class="arena"><div class="meta"><b id="round">الجولة 1</b><div class="bar"><i id="progress"></i></div><span id="remaining">0 متبقٍ</span></div><div class="timer" id="timer"><div><b id="seconds">30</b><small>SEC</small></div></div><section class="question"><span id="questionNo">السؤال</span><h2 id="questionText">اضغط دخول اللعبة</h2></section><div class="answers" id="answers"></div><div class="feedback" id="feedback">ستظهر أربعة اختيارات هنا.</div></main></div>
+
+<div class="intro" id="intro">
+    <img src="https://iili.io/noyfWAl.png" alt="MR JOO">
+    <h1>Welcome in MR JOO WORLD</h1>
+    <button class="start-btn" id="startBtn">دخول اللعبة</button>
+</div>
+
+<div class="app" id="app">
+    <header class="top">
+        <div class="brand">
+            <h1>MR JOO WORLD</h1>
+            <small>3D INTERACTIVE EXPERIENCE</small>
+        </div>
+        <div class="hud">
+            <div class="pill"><small>النقاط</small><b id="scoreDisplay">0</b></div>
+            <div class="pill"><small>المستوى</small><b id="levelDisplay">1</b></div>
+        </div>
+    </header>
+    
+    <main class="arena" id="arena">
+        <h3 class="level-title" id="stageTitle">المستوى الأول: تحدي المعرفة</h3>
+        
+        <div class="timer" id="timer">
+            <b id="timeText">30</b>
+        </div>
+        
+        <div class="question-box">
+            <h2 id="qText">جاري التحميل...</h2>
+        </div>
+        
+        <!-- Level 1, 3, 4 (MCQ) -->
+        <div class="answers" id="answersArea"></div>
+        
+        <!-- Level 2 (Word Puzzle) -->
+        <div class="word-puzzle" id="wordPuzzleArea">
+            <div class="letters-box" id="lettersBox"></div>
+            <p style="margin:0; color:#ccc; font-size:16px; transform: translateZ(10px);">استخرج 5 كلمات عربية صحيحة من الحروف المذكورة</p>
+            <div class="input-area">
+                <input type="text" id="wordInput" placeholder="اكتب الكلمة هنا..." autocomplete="off">
+                <button id="submitWordBtn">إرسال</button>
+            </div>
+            <div class="found-words" id="foundWordsBox"></div>
+        </div>
+    </main>
+</div>
+
 <script>
-const BG=['https://iili.io/nob4Q72.png','https://iili.io/nob4Ldl.png','https://iili.io/nob4tm7.png','https://iili.io/noyfV94.png'];
-const BANK=[['علوم','ما الكوكب المعروف بالكوكب الأحمر؟',['الزهرة','المريخ','عطارد','نبتون'],1],['علوم','ما الغاز الأكثر وفرة في الغلاف الجوي؟',['الأكسجين','النيتروجين','الهيدروجين','الهيليوم'],1],['علوم','ما العضو الذي يضخ الدم؟',['الكبد','القلب','الرئة','المعدة'],1],['علوم','ما أكبر عضو في جسم الإنسان؟',['القلب','الجلد','الكبد','الدماغ'],1],['جغرافيا','ما أكبر محيط في العالم؟',['الأطلسي','الهندي','الهادئ','المتجمد'],2],['جغرافيا','ما عاصمة اليابان؟',['بكين','طوكيو','سيول','بانكوك'],1],['تاريخ','من أول الخلفاء الراشدين؟',['عمر','أبو بكر','عثمان','علي'],1],['رياضيات','ما ناتج 12 × 8؟',['84','96','108','72'],1],['رياضيات','ما الجذر التربيعي لـ144؟',['10','12','14','16'],1],['دين','ما أول سورة نزلت؟',['الفاتحة','العلق','البقرة','النمل'],1],['دين','إلى أي مدينة هاجر النبي ﷺ؟',['مكة','المدينة المنورة','دمشق','القدس'],1],['ثقافة','ما اللغة الرسمية في البرازيل؟',['الإسبانية','البرتغالية','الفرنسية','الإنجليزية'],1],['لغز','ما الذي كلما أخذت منه كبر؟',['العمر','الحفرة','الكتاب','الصوت'],1],['لغز','له أسنان ولا يعض؟',['المنشار','المشط','الحصان','القلم'],1],['لغز','يمشي بلا رجلين ويبكي بلا عينين؟',['السحاب','الصدى','الوقت','الظل'],0],['لغز','ما الشيء الذي إذا نطقت اسمه اختفى؟',['الهدوء','الصمت','الظلام','الحلم'],1],['لغز','له رقبة بلا رأس؟',['الزجاجة','القلم','الطاولة','الباب'],0],['لغز','شيء تملكه ويستعمله الناس أكثر منك؟',['اسمك','مالك','بيتك','هاتفك'],0],['لغز','ما الذي يسمع بلا أذن ويتكلم بلا لسان؟',['الصدى','الهاتف','الكتاب','الريح'],0],['لغز','ما الذي يأتي دائمًا ولا يصل؟',['الغد','الأمس','الصوت','الطريق'],0]].map((x,id)=>({id,cat:x[0],q:x[1],options:x[2],correct:x[3],riddle:x[0]==='لغز'}));
-const $=id=>document.getElementById(id),letters=['A','B','C','D'];let state=JSON.parse(localStorage.getItem('mrjoo_final_v8')||'null')||{used:[],score:0,streak:0,round:0,total:0},current=null,locked=true,timer=null,seconds=30;
-function save(){localStorage.setItem('mrjoo_final_v8',JSON.stringify(state))}function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}function setBg(){world.style.backgroundImage=`linear-gradient(180deg,#01030a38,#01030ad8),url("${BG[state.round%BG.length]}")`;introBg.style.backgroundImage=`url("https://iili.io/noyfW94.png")`}
-function update(){score.textContent=state.score.toLocaleString('en-US');streak.textContent=state.streak;round.textContent=`الجولة ${state.round+1} • الخلفية ${(state.round%BG.length)+1}`;questionNo.textContent=`السؤال ${state.total+1}`;remaining.textContent=`${BANK.length-state.used.length} متبقٍ`;progress.style.width=(state.used.length/BANK.length*100)+'%';setBg()}
-function timerUI(){secondsEl.textContent=seconds;timer.style.setProperty('--time',seconds/30*100);timer.classList.toggle('danger',seconds<=7)}function stop(){clearInterval(timer)}function startTimer(){stop();seconds=30;timerUI();timer=setInterval(()=>{seconds--;timerUI();if(seconds<=0){stop();answer(-1)}},1000)}
-function render(){let available=BANK.filter(q=>!state.used.includes(q.id));if(!available.length){state.used=[];state.round++;available=BANK}current=available[Math.floor(Math.random()*available.length)];state.used.push(current.id);let items=shuffle(current.options.map((text,index)=>({text,index})));questionText.textContent=current.q;answers.innerHTML='';items.forEach((it,pos)=>{let b=document.createElement('button');b.className='answer';b.innerHTML=`<span class="letter">${letters[pos]}</span><span class="text">${it.text}</span>`;b.onclick=()=>answer(it.index,b);answers.appendChild(b)});feedback.textContent=current.riddle?'هذا لغز بلا مؤقت — خذ وقتك.':'أجب خلال 30 ثانية.';feedback.className='feedback';locked=false;update();current.riddle?stop():startTimer()}
-function answer(index,clicked){if(locked)return;locked=true;stop();let buttons=[...document.querySelectorAll('.answer')],correctText=current.options[current.correct],correctBtn=buttons.find(b=>b.querySelector('.text')?.textContent===correctText);buttons.forEach(b=>b.classList.add('locked'));if(correctBtn)correctBtn.classList.add('correct');if(clicked&&index!==current.correct)clicked.classList.add('wrong');if(index===current.correct){state.streak++;state.score+=current.riddle?250:100+seconds*5;feedback.textContent='إجابة صحيحة!';feedback.className='feedback good'}else{state.streak=0;state.score=Math.max(0,state.score-20);feedback.textContent=index===-1?`انتهى الوقت — الصحيحة: ${correctText}`:`إجابة خاطئة — الصحيحة: ${correctText}`;feedback.className='feedback bad'}state.total++;save();update();setTimeout(render,current.riddle?1200:750)}
-start.onclick=()=>{intro.classList.add('hide');setTimeout(()=>intro.style.display='none',850);render()};update();setBg();
+/* --- 1. Mouse 3D Tilt Effect --- */
+const arena = document.getElementById('arena');
+document.addEventListener('mousemove', (e) => {
+    if(!arena || document.getElementById('app').style.opacity === "0") return;
+    let xAxis = (window.innerWidth / 2 - e.pageX) / 30; // Adjust divisor for sensitivity
+    let yAxis = (window.innerHeight / 2 - e.pageY) / 30;
+    arena.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+});
+document.addEventListener('mouseleave', () => {
+    if(arena) {
+        arena.style.transition = 'transform 0.5s ease';
+        arena.style.transform = `rotateY(0deg) rotateX(0deg)`;
+    }
+});
+document.addEventListener('mouseenter', () => {
+    if(arena) arena.style.transition = 'transform 0.1s ease-out';
+});
+
+/* --- 2. Audio Engine (Procedural Synthesis) --- */
+const AudioEngine = (function() {
+    let ctx = null, heartbeatInterval = null, beatSpeed = 1000;
+    function init() { if(!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)(); }
+    
+    function playTone(freq, type, duration, vol) {
+        if(!ctx) return;
+        let osc = ctx.createOscillator(); let gain = ctx.createGain();
+        osc.type = type; osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(vol, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+        osc.connect(gain); gain.connect(ctx.destination);
+        osc.start(); osc.stop(ctx.currentTime + duration);
+    }
+    
+    function playNoise(duration, vol) {
+        if(!ctx) return;
+        let bufferSize = ctx.sampleRate * duration;
+        let buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        let data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+        let noise = ctx.createBufferSource(); noise.buffer = buffer;
+        let filter = ctx.createBiquadFilter(); filter.type = 'lowpass'; filter.frequency.value = 1000;
+        let gain = ctx.createGain(); gain.gain.setValueAtTime(vol, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+        noise.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
+        noise.start();
+    }
+
+    return {
+        init,
+        explosion: () => playNoise(1.5, 2.0),
+        correct: () => { playTone(600, 'sine', 0.1, 0.5); setTimeout(()=>playTone(800, 'sine', 0.3, 0.5), 100); },
+        wrong: () => { playTone(150, 'sawtooth', 0.5, 0.5); },
+        setHeartbeat: (secondsLeft) => {
+            if(heartbeatInterval) clearInterval(heartbeatInterval);
+            if(secondsLeft <= 0) return;
+            beatSpeed = Math.max(200, secondsLeft * 35); // Speeds up as time drops
+            heartbeatInterval = setInterval(() => playTone(65, 'sine', 0.2, 0.8), beatSpeed);
+        },
+        stopHeartbeat: () => { if(heartbeatInterval) clearInterval(heartbeatInterval); }
+    };
+})();
+
+/* --- 3. Particle Explosion Effect --- */
+function triggerExplosion(callback) {
+    const canvas = document.getElementById('explosionCanvas');
+    const c = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    let particles = [];
+    for(let i=0; i<180; i++) {
+        particles.push({
+            x: canvas.width/2, y: canvas.height/2,
+            vx: (Math.random()-0.5)*35, vy: (Math.random()-0.5)*35,
+            radius: Math.random()*6+2, color: Math.random()>0.5 ? '#ff3c38' : '#ffd66b', alpha: 1
+        });
+    }
+    AudioEngine.explosion();
+    
+    function animate() {
+        c.clearRect(0,0,canvas.width,canvas.height);
+        let active = false;
+        particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy; p.alpha -= 0.02;
+            if(p.alpha > 0) {
+                active = true; c.globalAlpha = p.alpha;
+                c.beginPath(); c.arc(p.x, p.y, p.radius, 0, Math.PI*2); 
+                c.fillStyle = p.color; c.shadowBlur = 20; c.shadowColor = p.color; c.fill();
+            }
+        });
+        if(active) requestAnimationFrame(animate);
+        else { canvas.style.display = 'none'; if(callback) callback(); }
+    }
+    animate();
+}
+
+/* --- 4. Game Logic & Data --- */
+const Backgrounds = ['https://iili.io/nob4Q72.png', 'https://iili.io/nob4Ldl.png', 'https://iili.io/nob4tm7.png', 'https://iili.io/noyfV94.png'];
+
+const GameBank = {
+    lvl1: [
+        { q: "ما هو الشيء الذي يكسو الناس وهو عارٍ بدون ملابس؟", opts: ["الإبرة", "الكتاب", "المرآة", "الظل"], ans: "الإبرة" },
+        { q: "رقم إذا ضربته في نفسه وأضفت إليه 5 أصبح 30؟", opts: ["5", "6", "4", "25"], ans: "5" },
+        { q: "ما هو العضو الذي يستهلك أكبر قدر من طاقة الجسم؟", opts: ["الدماغ", "القلب", "الكبد", "العضلات"], ans: "الدماغ" }
+    ],
+    lvl2: {
+        letters: ["ب", "ح", "ر", "س", "م"],
+        valid: ["بحر", "سحر", "رسم", "حبر", "رمح", "مسح", "رحب", "سمح", "حسر", "مرح", "حرم", "سرب", "مبرح"],
+        target: 5
+    },
+    lvl3: [
+        { q: "أنا دائماً جائع، يجب أن تطعمني دائماً، والإصبع الذي ألمسه سيتحول للون الأحمر. ما أنا؟", opts: ["النار", "الشمس", "الأسد", "الوقت"], ans: "النار" },
+        { q: "كلما زاد، قلّت قدرتك على الرؤية. ما هو؟", opts: ["الظلام", "الدخان", "الضوء", "الضباب"], ans: "الظلام" }
+    ],
+    lvl4: [
+        { q: "في قرية قديمة، كان هناك رجل يمتلك شيئاً لا يراه، لكنه يحدد هويته أمام الناس. إذا ضاع منه، فقد الرجل قيمته. ما هو؟", opts: ["سمعته", "ظله", "ماله", "عقله"], ans: "سمعته" },
+        { q: "جريمة قتل في القطب الشمالي، وُجدت الجثة وسط الجليد بلا أي آثار أقدام حولها، أداة الجريمة اختفت تماماً. ما هي أداة الجريمة؟", opts: ["رمح من الجليد", "رصاصة", "سهم خشبي", "حبل"], ans: "رمح من الجليد" }
+    ]
+};
+
+let state = { level: 1, score: 0, qIndex: 0, timer: 30, interval: null, foundWords: [] };
+const $ = id => document.getElementById(id);
+
+function shuffle(array) { return array.sort(() => Math.random() - 0.5); }
+
+function setWorldVisuals() {
+    $("world").style.backgroundImage = `url("${Backgrounds[(state.level - 1) % Backgrounds.length]}")`;
+    $("scoreDisplay").textContent = state.score;
+    $("levelDisplay").textContent = state.level;
+    const titles = ["المستوى الأول: تحدي المعرفة", "المستوى الثاني: التلاعب بالكلمات", "المستوى الثالث: ألغاز العقل", "المستوى الرابع: ألغاز بحكاية"];
+    $("stageTitle").textContent = titles[state.level - 1] || "مستوى إضافي";
+}
+
+function startTimer(duration) {
+    clearInterval(state.interval);
+    state.timer = duration;
+    updateTimerUI();
+    AudioEngine.setHeartbeat(state.timer);
+    
+    state.interval = setInterval(() => {
+        state.timer--;
+        updateTimerUI();
+        AudioEngine.setHeartbeat(state.timer);
+        if(state.timer <= 0) {
+            clearInterval(state.interval);
+            AudioEngine.stopHeartbeat();
+            handleTimeout();
+        }
+    }, 1000);
+}
+
+function updateTimerUI() {
+    $("timeText").textContent = state.timer;
+    $("timer").style.setProperty('--time', (state.timer / (state.level===2?60:30)) * 100);
+    $("timer").style.boxShadow = state.timer <= 10 ? "0 0 35px rgba(255, 60, 56, 1)" : "0 0 25px rgba(255, 60, 56, 0.6)";
+}
+
+function loadQuestion() {
+    setWorldVisuals();
+    $("answersArea").style.display = "none";
+    $("wordPuzzleArea").style.display = "none";
+    
+    if (state.level === 1 || state.level === 3 || state.level === 4) {
+        let bank = state.level === 1 ? GameBank.lvl1 : (state.level === 3 ? GameBank.lvl3 : GameBank.lvl4);
+        if (state.qIndex >= bank.length) { state.level++; state.qIndex = 0; return loadQuestion(); }
+        
+        let qData = bank[state.qIndex];
+        $("qText").textContent = qData.q;
+        $("answersArea").innerHTML = "";
+        $("answersArea").style.display = "grid";
+        
+        let options = shuffle([...qData.opts]);
+        options.forEach(opt => {
+            let btn = document.createElement("div");
+            btn.className = "answer";
+            btn.textContent = opt;
+            btn.onclick = () => handleMCQAnswer(btn, opt, qData.ans);
+            $("answersArea").appendChild(btn);
+        });
+        startTimer(30);
+    } 
+    else if (state.level === 2) {
+        let lData = GameBank.lvl2;
+        if(state.foundWords.length >= lData.target) { state.level++; state.qIndex=0; return loadQuestion(); }
+        
+        $("qText").textContent = "المستوى السري: تفكيك الحروف";
+        $("wordPuzzleArea").style.display = "flex";
+        $("lettersBox").textContent = lData.letters.join(" - ");
+        $("foundWordsBox").innerHTML = state.foundWords.map(w => `<span>${w}</span>`).join("");
+        $("wordInput").value = "";
+        $("wordInput").focus();
+        
+        startTimer(60); // 60 seconds for puzzle
+    }
+}
+
+function handleMCQAnswer(btn, selected, correct) {
+    clearInterval(state.interval);
+    AudioEngine.stopHeartbeat();
+    let buttons = document.querySelectorAll('.answer');
+    buttons.forEach(b => b.classList.add('locked'));
+    
+    if (selected === correct) {
+        btn.classList.add("correct");
+        AudioEngine.correct();
+        state.score += 100 + (state.timer * 5);
+    } else {
+        btn.classList.add("wrong");
+        AudioEngine.wrong();
+        buttons.forEach(b => { if(b.textContent === correct) b.classList.add("correct"); });
+        state.score = Math.max(0, state.score - 50);
+    }
+    
+    $("scoreDisplay").textContent = state.score;
+    setTimeout(() => { state.qIndex++; loadQuestion(); }, 2000);
+}
+
+// Word Puzzle Functions
+$("submitWordBtn").onclick = checkWord;
+$("wordInput").onkeypress = (e) => { if(e.key === "Enter") checkWord(); };
+
+function checkWord() {
+    let word = $("wordInput").value.trim();
+    let lData = GameBank.lvl2;
+    
+    if (state.foundWords.includes(word)) {
+        $("wordInput").style.borderColor = "var(--red)"; AudioEngine.wrong();
+    } else if (lData.valid.includes(word)) {
+        state.foundWords.push(word);
+        state.score += 200;
+        AudioEngine.correct();
+        $("wordInput").value = "";
+        $("wordInput").style.borderColor = "#39e8a0";
+        $("foundWordsBox").innerHTML = state.foundWords.map(w => `<span>${w}</span>`).join("");
+        $("scoreDisplay").textContent = state.score;
+        
+        if (state.foundWords.length >= lData.target) {
+            clearInterval(state.interval); AudioEngine.stopHeartbeat();
+            setTimeout(() => { state.level++; state.qIndex=0; loadQuestion(); }, 1500);
+        }
+    } else {
+        $("wordInput").style.borderColor = "var(--red)"; AudioEngine.wrong();
+    }
+    setTimeout(() => $("wordInput").style.borderColor = "var(--orange)", 1000);
+}
+
+function handleTimeout() {
+    AudioEngine.wrong();
+    if(state.level === 2) {
+        state.score = Math.max(0, state.score - 100);
+        state.foundWords = [];
+        loadQuestion();
+    } else {
+        let bank = state.level === 1 ? GameBank.lvl1 : (state.level === 3 ? GameBank.lvl3 : GameBank.lvl4);
+        let qData = bank[state.qIndex];
+        let buttons = document.querySelectorAll('.answer');
+        buttons.forEach(b => { 
+            b.classList.add('locked');
+            if(b.textContent === qData.ans) b.classList.add("correct"); 
+        });
+        setTimeout(() => { state.qIndex++; loadQuestion(); }, 2000);
+    }
+}
+
+// Init
+$("startBtn").onclick = () => {
+    AudioEngine.init(); // Init audio context on user gesture
+    $("intro").style.opacity = "0";
+    triggerExplosion(() => {
+        $("intro").style.display = "none";
+        $("app").classList.add("visible");
+        loadQuestion();
+    });
+};
 </script>
 </body>
 </html>
